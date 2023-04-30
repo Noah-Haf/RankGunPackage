@@ -6,7 +6,7 @@ Api_Token = sys.argv[0]
 
 async def main():
     print("let's go")
-    Workspace = rankgun.RankGunAPI(Api_Token, 1)
+    Workspace = rankgun.RankGun(Api_Token, 1)
 
     Attempt1 = await Workspace.promote(username="RankGunTests")
     Attempt2 = await Workspace.demote(username="RankGunTests")
