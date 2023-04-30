@@ -11,8 +11,6 @@ async def main():
     Attempt1 = await Workspace.promote(username="RankGunTests")
     Attempt2 = await Workspace.demote(username="RankGunTests")
 
-    print(Attempt1)
-
     if Attempt1["status_code"] != 200 or Attempt2["status_code"] != 200: 
         raise Exception("Something went wrong")
     else:
