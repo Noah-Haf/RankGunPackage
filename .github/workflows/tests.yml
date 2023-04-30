@@ -10,7 +10,7 @@ name: Tests RankGun
 
 on:
    push:
-      branches: [ master ]
+      branches: [ main ]
       
 
 jobs:
