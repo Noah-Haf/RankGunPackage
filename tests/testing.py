@@ -3,6 +3,7 @@ import sys
 import asyncio
 
 Api_Token = sys.argv[0]
+print(Api_Token)
 
 async def main():
     print("let's go")
