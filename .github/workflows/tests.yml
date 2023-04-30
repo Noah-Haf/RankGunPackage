@@ -30,6 +30,7 @@ jobs:
         pip install build
         pip install rankgun
         pip install aiohttp
+        pip install asyncio
     - name: execute py script
       run: |
         python3 ./tests/testing.py ${{ secrets.RANKGUN_SECRET }}
