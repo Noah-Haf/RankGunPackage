@@ -32,4 +32,4 @@ jobs:
         pip install aiohttp
     - name: execute py script
       run: |
-        python3 ./src/tests/testing.py ${{ secrets.RANKGUN_SECRET }}
+        python3 ./tests/testing.py ${{ secrets.RANKGUN_SECRET }}
