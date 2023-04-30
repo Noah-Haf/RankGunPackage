@@ -29,6 +29,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
         pip install rankgun
+        pip install aiohttp
     - name: execute py script
       run: 
         python3 ./src/rankgun/__innit__.py
