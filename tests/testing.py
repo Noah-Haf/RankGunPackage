@@ -10,5 +10,5 @@ Attempt2 = Workspace.demote(username="RankGunTests")
 
 if Attempt1["status_code"] != 200 or Attempt2["status_code"] != 200: 
     raise("Something went wrong")
-else
+else:
     print("All went well")
