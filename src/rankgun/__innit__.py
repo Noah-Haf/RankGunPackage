@@ -3,7 +3,7 @@ import aiohttp
 BASE_URL = "http://api.rankgun.works"
 
 
-class RankGunAPI:
+class RankGun:
     """A client for the RankGun API."""
 
     def __init__(self, api_token, workspace_id):
