@@ -1,5 +1,6 @@
 import rankgun
 import sys
+import asyncio
 
 Api_Token = sys.argv[0]
 
@@ -17,4 +18,7 @@ async def main():
     else:
         print("All went well")
 
-await main()
+async def run_main():
+    await main()
+
+asyncio.run(run_main())
