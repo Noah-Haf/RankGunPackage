@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/rankgun/__init__.py
+src/rankgun.egg-info/PKG-INFO
+src/rankgun.egg-info/SOURCES.txt
+src/rankgun.egg-info/dependency_links.txt
+src/rankgun.egg-info/requires.txt
+src/rankgun.egg-info/top_level.txt

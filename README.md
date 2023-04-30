@@ -1,0 +1,1 @@
+Make for [rankgun](https://rankgun.works), read the [docs](https://docs.rankgun.works).
