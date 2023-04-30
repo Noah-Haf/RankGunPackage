@@ -32,5 +32,4 @@ jobs:
         pip install aiohttp
     - name: execute py script
       run: |
-        python3 ./src/rankgun/__innit__.py ${{ secrets.RANKGUN_SECRET }} > logs.txt
-        cat logs.txt
+        python3 ./src/tests/testing.py ${{ secrets.RANKGUN_SECRET }}
