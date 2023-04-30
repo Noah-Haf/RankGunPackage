@@ -3,7 +3,7 @@ import sys
 
 Api_Token = sys.argv[0]
 
-
+print("let's go")
 Workspace = rankgun.RankGunAPI(Api_Token, 1)
 
 Attempt1 = Workspace.promote(username="RankGunTests")
