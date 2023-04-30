@@ -1,4 +1,4 @@
-# RankGun V2.0.0
+# RankGun V2.0.5
 
 An API wrapper for the RankGun API.
 
