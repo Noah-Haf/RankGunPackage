@@ -2,8 +2,8 @@ import rankgun
 import sys
 import asyncio
 
-Api_Token = sys.argv[0]
-print(Api_Token)
+Api_Token = sys.argv[1]
+
 
 async def main():
     print("let's go")
