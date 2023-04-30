@@ -31,5 +31,6 @@ jobs:
         pip install rankgun
         pip install aiohttp
     - name: execute py script
-      run: 
-        python3 ./src/rankgun/__innit__.py ${{ secrets.RANKGUN_SECRET }}
+      run: |
+        python3 ./src/rankgun/__innit__.py ${{ secrets.RANKGUN_SECRET }} > logs.txt
+        cat logs.txt
