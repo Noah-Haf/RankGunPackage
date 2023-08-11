@@ -15,7 +15,7 @@ class RankGun:
     def _request(self, method, endpoint, params=None, data=None):
         """Make a request to the RankGun API."""
         url = f"{BASE_URL}{endpoint}"
-        response = self.session.request(method=method, url, params=params, json=data)
+        response = self.session.request(method, url, params=params, json=data)
         response.raise_for_status()
         return response.json()
 
