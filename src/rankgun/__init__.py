@@ -1,4 +1,4 @@
-import requests
+import aiohttp
 
 BASE_URL = "http://api.rankgun.works"
 
@@ -9,22 +9,28 @@ class RankGun:
     def __init__(self, api_token, workspace_id):
         self.api_key = api_token
         self.workspace_id = workspace_id
-        self.session = requests.Session()
-        self.session.headers.update({"api-token": self.api_key})
+        self.session = aiohttp.ClientSession(headers={"api-token": self.api_key})
 
-    def _request(self, method, endpoint, params=None, data=None):
-        """Make a request to the RankGun API."""
+    async def _get(self, endpoint, params=None):
+        """Make a GET request to the RankGun API."""
         url = f"{BASE_URL}{endpoint}"
-        response = self.session.request(method, url, params=params, json=data)
-        response.raise_for_status()
-        return response.json()
+        async with self.session.get(url, params=params) as response:
+            response.raise_for_status()
+            return await response.json()
 
-    def get_status(self):
+    async def _post(self, endpoint, params=None):
+        """Make a GET request to the RankGun API."""
+        url = f"{BASE_URL}{endpoint}"
+        async with self.session.post(url, params=params) as response:
+            response.raise_for_status()
+            return await response.json()
+
+    async def get_status(self):
         """Get the status of the RankGun API."""
         endpoint = "/status"
-        return self._request("GET", endpoint)
+        return await self._get(endpoint)
 
-    def promote(self, username=None, User_Id=None):
+    async def promote(self, username=None, User_Id=None):
         """Promote a user. +1 rank"""
         endpoint = "/ranking/promote"
         params = {"workspace_id": self.workspace_id}
@@ -33,9 +39,9 @@ class RankGun:
             params["username"] = username
         elif User_Id is not None:
             params["user_id"] = User_Id
-        return self._request("POST", endpoint, params=params)
+        return await self._post(endpoint, params=params)
 
-    def demote(self, username=None, User_Id=None):
+    async def demote(self, username=None, User_Id=None):
         """Demote a user. -1 Rank"""
         endpoint = "/ranking/demote"
         params = {"workspace_id": self.workspace_id}
@@ -44,9 +50,9 @@ class RankGun:
             params["username"] = username
         elif User_Id is not None:
             params["user_id"] = User_Id
-        return self._request("POST", endpoint, params=params)
+        return await self._post(endpoint, params=params)
 
-    def setrank(self, rank, username=None, User_Id=None):
+    async def setrank(self, rank, username=None, User_Id=None):
         """Set the rank of a user. * Rank"""
         endpoint = "/ranking/set-rank"
         params = {"workspace_id": self.workspace_id, "rank": rank}
@@ -55,9 +61,9 @@ class RankGun:
             params["username"] = username
         elif User_Id is not None:
             params["user_id"] = User_Id
-        return self._request("POST", endpoint, params=params)
+        return await self._post(endpoint, params=params)
 
-    def exile(self, username=None, User_Id=None):
+    async def exile(self, username=None, User_Id=None):
         """Removes players from group."""
         endpoint = "/ranking/exile"
         params = {"workspace_id": self.workspace_id}
@@ -66,10 +72,10 @@ class RankGun:
             params["username"] = username
         elif User_Id is not None:
             params["user_id"] = User_Id
-        return self._request("POST", endpoint, params=params)
+        return await self._post(endpoint, params=params)
 
-    def shout(self, shout_text):
+    async def shout(self, shout_text):
         """Shouts to group."""
         endpoint = "/utils/shout"
         params = {"workspace_id": self.workspace_id, "shout_text": shout_text}
-        return self._request("POST", endpoint, params=params)
+        return await self._post(endpoint, params=params)
