@@ -8,10 +8,8 @@
 
 name: Tests RankGun
 
-on:
-   push:
-      branches: [ main ]
-      
+on: push
+
 
 jobs:
   deploy:
@@ -24,13 +22,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
-    - name: Install dependencies
-      run: 
+    - name: Upgrade pip
+      run:
         python -m pip install --upgrade pip
-        pip install build
-        pip install rankgun
-        pip install aiohttp
-        pip install asyncio
+        pip install --upgrade pip
+    - name: Install dependencies
+      run:
+        pip install -r requirements.txt
     - name: execute py script
       run: |
         python3 ./tests/testing.py ${{ secrets.RANKGUN_SECRET }}
