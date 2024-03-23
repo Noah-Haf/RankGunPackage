@@ -11,7 +11,7 @@ name: Tests RankGun
 on:
    push:
       branches: [ main ]
-      
+
 
 jobs:
   deploy:
@@ -29,10 +29,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade pip
     - name: Install dependencies
-      run: 
-        pip install rankgun
-        pip install aiohttp
-        pip install asyncio
+      run:
+        pip install -r requirements.txt
     - name: execute py script
       run: |
         python3 ./tests/testing.py ${{ secrets.RANKGUN_SECRET }}
