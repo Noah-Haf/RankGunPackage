@@ -1,4 +1,4 @@
-# RankGun V2.1.6
+# RankGun V2.1.7
 
 ![Tests](https://github.com/Noah-Haf/RankGunModule/actions/workflows/tests.yml/badge.svg)
 
