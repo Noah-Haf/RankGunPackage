@@ -1,4 +1,4 @@
-name: Publish Python 🐍 distribution 📦 to PyPI 
+name: Publish Python Package to PyPI 
 
 on: push
 
@@ -29,7 +29,8 @@ jobs:
 
   publish-to-pypi:
     name: >-
-      Publish Python 🐍 distribution 📦 to PyPI
+      Publish Python distribution to PyPI
+    if: startsWith(github.ref, 'refs/tags/')
     needs:
     - build
     runs-on: ubuntu-latest
@@ -50,7 +51,7 @@ jobs:
 
   github-release:
     name: >-
-      Sign the Python 🐍 distribution 📦 with Sigstore
+      Sign the Python distribution with Sigstore
       and upload them to GitHub Release
     needs:
     - publish-to-pypi
